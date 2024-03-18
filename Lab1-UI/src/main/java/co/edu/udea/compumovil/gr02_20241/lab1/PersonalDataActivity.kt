@@ -1,12 +1,7 @@
 package co.edu.udea.compumovil.gr02_20241.lab1
 
-import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
-
+import android.os.Bundle
 import android.widget.*
 
 class PersonalDataActivity : AppCompatActivity() {
