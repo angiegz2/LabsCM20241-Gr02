@@ -1,8 +1,11 @@
 package co.edu.udea.compumovil.gr02_20241.lab1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
+import androidx.core.view.isVisible
 
 class PersonalDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,35 +27,66 @@ class PersonalDataActivity : AppCompatActivity() {
         }
 
     }
-}
 
-private fun showDatePikerDialog() {
-    val datePicker=DatePickerFragment({day,month,year-> onDateSelected(year,month,day)})
-    datePicker.show(supportFragmentManager,"datePiker")
-}
-
-private fun onDateSelected(day:Int,month:Int,year: Int){
-    findViewById<EditText>(R.id.etDate).setText("$day/$month/$year")
-}
-
-private fun radioButtonCheckTrue(): String {
-    if (findViewById<RadioButton>(R.id.radioButtonM).isChecked){
-        return findViewById<RadioButton>(R.id.radioButtonM).text.toString()
-
+    private fun showDatePikerDialog() {
+        val datePicker=DatePickerFragment({day,month,year-> onDateSelected(year,month,day)})
+        datePicker.show(supportFragmentManager,"datePiker")
     }
-    else if (findViewById<RadioButton>(R.id.radioButtonF).isChecked){
-        return findViewById<RadioButton>(R.id.radioButtonF).text.toString()
-    }
-    else{
-        return ""
-    }
-}
 
-private fun levelSpinnerOption():String{
-    if ((findViewById<Spinner>(R.id.SpinnerLevelEducation) as Spinner).selectedItemPosition==0){
-        return ""
+    private fun onDateSelected(day:Int,month:Int,year: Int){
+        findViewById<EditText>(R.id.etDate).setText("$day/$month/$year")
     }
-    else{
-        return (findViewById<Spinner>(R.id.SpinnerLevelEducation) as Spinner).selectedItem.toString()
+
+    private fun radioButtonCheckTrue(): String {
+        if (findViewById<RadioButton>(R.id.radioButtonM).isChecked){
+            return findViewById<RadioButton>(R.id.radioButtonM).text.toString()
+
+        }
+        else if (findViewById<RadioButton>(R.id.radioButtonF).isChecked){
+            return findViewById<RadioButton>(R.id.radioButtonF).text.toString()
+        }
+        else{
+            return ""
+        }
+    }
+
+    private fun levelSpinnerOption():String{
+        if ((findViewById<Spinner>(R.id.SpinnerLevelEducation) as Spinner).selectedItemPosition==0){
+            return ""
+        }
+        else{
+            return (findViewById<Spinner>(R.id.SpinnerLevelEducation) as Spinner).selectedItem.toString()
+        }
+    }
+
+    private fun personValidation(){
+        var personname=(findViewById<EditText>(R.id.editTextPersonName) as EditText).text.toString()
+        var personlastname=(findViewById<EditText>(R.id.editTextPersonLastname) as EditText).text.toString()
+        var personsexo=radioButtonCheckTrue()
+        var personbirth=(findViewById<EditText>(R.id.etDate) as EditText).text.toString()
+        var personeducation=levelSpinnerOption()
+
+        if (personname.isEmpty() || personlastname.isEmpty() || personbirth.isEmpty()){
+            (findViewById<EditText>(R.id.textNameError)).isVisible = personname.isEmpty()
+            (findViewById<EditText>(R.id.textLastNameError)).isVisible = personlastname.isEmpty()
+            (findViewById<EditText>(R.id.textErroretDate)).isVisible = personbirth.isEmpty()
+        }
+
+        else{
+            (findViewById<EditText>(R.id.textNameError)).isVisible = false
+            (findViewById<EditText>(R.id.textLastNameError)).isVisible = false
+            (findViewById<EditText>(R.id.textErroretDate)).isVisible = false
+
+            if(personsexo.isEmpty()){
+                Log.i("Personal Data",personname+" "+personlastname+"\n"+personbirth+"\n"+personeducation)
+            }
+            else{
+                Log.i("Personal Data",personname+" "+personlastname+"\n"+personsexo+"\n"+personbirth+"\n"+personeducation)
+            }
+
+
+            val intent: Intent = Intent(this,ContactDataActivity::class.java)//modificar para que sea como
+            startActivity(intent)//
+        }
     }
 }
