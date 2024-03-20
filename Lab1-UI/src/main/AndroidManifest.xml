@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    package="co.edu.udea.compumovil.gr02_20241.lab1">
 
-    package="co.edu.udea.compumovil.gr02_20241.lab1"
-    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
