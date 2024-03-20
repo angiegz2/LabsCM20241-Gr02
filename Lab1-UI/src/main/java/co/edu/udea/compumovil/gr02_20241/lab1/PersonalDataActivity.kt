@@ -85,8 +85,8 @@ class PersonalDataActivity : AppCompatActivity() {
             }
 
 
-            val intent: Intent = Intent(this,ContactDataActivity::class.java)//modificar para que sea como
-            startActivity(intent)//
+            val intent: Intent = Intent(this,ContactDataActivity::class.java)
+            startActivity(intent)
         }
     }
 }
