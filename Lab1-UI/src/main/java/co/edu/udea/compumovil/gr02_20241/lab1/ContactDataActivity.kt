@@ -90,7 +90,7 @@ class ContactDataActivity : AppCompatActivity() {
 
 
         if (contactPhone.isEmpty() || contactMail.isEmpty() || contactCountry.isEmpty()){
-            println("error no lleno los  campos")
+            println("Error, no llenó los  campos.")
 
 
             (findViewById<EditText>(R.id.textPhoneError)).isVisible = contactPhone.isEmpty()
