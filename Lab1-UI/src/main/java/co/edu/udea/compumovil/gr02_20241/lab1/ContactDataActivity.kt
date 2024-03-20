@@ -7,6 +7,10 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.EditText
+import androidx.core.view.isVisible
+import android.util.Log
+import android.content.Intent
 
 class ContactDataActivity : AppCompatActivity() {
     val country = arrayOf(
@@ -76,5 +80,38 @@ class ContactDataActivity : AppCompatActivity() {
 
         campoSugerencias.setAdapter(adaptador)
     }
+
+    private fun contactValidation(){
+        var contactPhone=(findViewById<EditText>(R.id.contactPhone) as EditText).text.toString()
+        var contactMail=(findViewById<EditText>(R.id.contactMail) as EditText).text.toString()
+        var contactCountry=(findViewById<EditText>(R.id.contactCountry) as EditText).text.toString()
+        var contactCity=(findViewById<EditText>(R.id.contactCity) as EditText).text.toString()
+        var contactDirection=(findViewById<EditText>(R.id.contactDirection) as EditText).text.toString()
+
+
+        if (contactPhone.isEmpty() || contactMail.isEmpty() || contactCountry.isEmpty()){
+            println("error no lleno los  campos")
+
+
+            (findViewById<EditText>(R.id.textPhoneError)).isVisible = contactPhone.isEmpty()
+
+            (findViewById<EditText>(R.id.textmailError)).isVisible = contactMail.isEmpty()
+
+            (findViewById<EditText>(R.id.textCountryError)).isVisible = contactCountry.isEmpty()
+
+        }
+        else{
+            (findViewById<EditText>(R.id.textPhoneError)).isVisible = false
+
+            (findViewById<EditText>(R.id.textmailError)).isVisible = false
+
+            (findViewById<EditText>(R.id.textCountryError)).isVisible = false
+
+            Log.i("contactData", "Contact information"+"\n"+"Phone: "+contactPhone+"\n"+"Mail: "+contactMail+"\n"+"Country: "+contactCountry+"\n"+"City: "+contactCity+"\n"+"Direction: "+contactDirection)
+
+        }
+
+    }
 }
+
 
