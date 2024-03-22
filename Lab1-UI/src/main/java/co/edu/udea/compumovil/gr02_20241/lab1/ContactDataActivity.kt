@@ -1,6 +1,5 @@
 package co.edu.udea.compumovil.gr02_20241.lab1
 
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View

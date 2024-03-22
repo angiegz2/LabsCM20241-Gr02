@@ -27,5 +27,4 @@ class DatePickerFragment(val listener: (day:Int ,month:Int,year:Int)->Unit):Dial
         listener(p1,p2,p3)
     }
 
-
 }
