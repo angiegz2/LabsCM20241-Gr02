@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.core.view.isVisible
 import android.util.Log
-import android.content.Intent
 
 class ContactDataActivity : AppCompatActivity() {
     val country = arrayOf(
@@ -39,15 +38,22 @@ class ContactDataActivity : AppCompatActivity() {
         "Medellín",
         "Cali",
         "Bucaramanga",
-        "Cartagena",
+        "Cartagena de Indias",
+        "Leticia",
         "Soacha",
         "Cúcuta",
         "Soledad",
-        "Bucaramanga",
+        "Arauca",
+        "Barranquilla",
+        "Popayán",
+        "San José del Guaviare",
         "Pereira",
         "Montería",
         "Pasto",
-        "Bello",
+        "Tunja",
+        "Manizales",
+        "Florencia",
+        "Yopal",
         "Armenia",
         "Villavicencio"
     )
